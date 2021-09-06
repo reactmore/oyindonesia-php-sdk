@@ -48,10 +48,10 @@ class InquiryInvoices implements RequestInterface
     public function getData()
     {
         try {
-            MainValidator::validateRequest($this->getPayload(), ['bank_code', 'account_number']);
+            MainValidator::validateRequest($this->getPayload());
 
             $request = RequestFormatter::formatArrayKeysToSnakeCase($this->getPayload());
-            $response = Guzzle::sendRequest($this->api_url . '/account-inquiry', 'POST', $this->headers, $request);
+            $response = Guzzle::sendRequest($this->api_url . '/account-inquiry/invoices', 'GET', $this->headers, $request, 'query');
 
             // $response = $response['data'];
 
