@@ -12,6 +12,7 @@ class MainValidator
     public static function validateRequest($request, $required = [])
     {
         ValidationHelper::validateContentType($request);
+
         if (!empty($required)) {
             ValidationHelper::validateContentFields($request, $required);
         }

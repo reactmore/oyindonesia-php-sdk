@@ -6,7 +6,7 @@ namespace Reactmore\OY\API;
 interface RequestInterface
 {
 
-    public function setPayload(array $data);
+    public function setPayload($data = []);
 
     public function getPayload();
 

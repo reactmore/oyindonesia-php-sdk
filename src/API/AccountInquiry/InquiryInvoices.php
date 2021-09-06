@@ -11,7 +11,7 @@ use Reactmore\OY\Helpers\Request\RequestFormatter;
 use Reactmore\OY\Helpers\Validations\MainValidator;
 
 
-class Inquiry implements RequestInterface
+class InquiryInvoices implements RequestInterface
 {
     private  $api_url, $headers, $data;
 

@@ -6,16 +6,15 @@ use Reactmore\OY\Main;
 
 $data = new Main();
 
-$accinquiry = $data->AccountInquiry()->inquiry();
-$accinquiry->setPayload([
-    'bank_code' => '014',
-    'account_number' => '123123123123'
-]);
+// EXAMPLE AccountInquiry 
+$AccountInquiry = $data->AccountInquiry()->InquiryInvoices();
+
+$AccountInquiry->setPayload('s');
 
 echo '<pre>';
-var_dump($accinquiry->getPayload());
-var_dump($accinquiry->getdata());
-var_dump($accinquiry->getJson());
-var_dump($accinquiry->getResponse());
-var_dump($accinquiry->getStatusCode());
+var_dump($AccountInquiry->getPayload());
+var_dump($AccountInquiry->getdata());
+var_dump($AccountInquiry->getJson());
+var_dump($AccountInquiry->getResponse());
+var_dump($AccountInquiry->getStatusCode());
 echo '</pre>';
