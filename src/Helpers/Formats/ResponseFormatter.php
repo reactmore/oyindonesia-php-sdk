@@ -7,8 +7,10 @@ class ResponseFormatter
     public static function formatResponse($data, $code = 200, $status = 'success')
     {
         return [
-            'status' => $status,
-            'code' => $code,
+            'status' => [
+                'code' => $code,
+                'messages' => $status,
+            ],
             'data' => $data
         ];
     }

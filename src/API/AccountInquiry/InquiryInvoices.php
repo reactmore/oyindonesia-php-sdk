@@ -45,6 +45,20 @@ class InquiryInvoices implements RequestInterface
 
 
 
+    public function getById()
+    {
+        try {
+            MainValidator::validateRequest($this->getPayload(), ['id']);
+
+            $request = RequestFormatter::formatArrayKeysToSnakeCase($this->getPayload());
+            $response = Guzzle::sendRequest($this->api_url . '/account-inquiry/invoices/' . $request['id'], 'GET', $this->headers);
+
+            return $response;
+        } catch (Exception $e) {
+            return Guzzle::handleException($e);
+        }
+    }
+
     public function getData()
     {
         try {
