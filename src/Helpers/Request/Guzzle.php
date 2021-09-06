@@ -8,13 +8,13 @@ use Reactmore\OY\Helpers\Formats\ResponseFormatter;
 
 class Guzzle
 {
-    public static function sendRequest($url, $method, $headers = [], $body = [], $connectTimeout = 10, $timeout = 30)
+    public static function sendRequest($url, $method, $headers = [], $body = [], $type = 'json', $connectTimeout = 10, $timeout = 30)
     {
         $client = new Client(['verify' => false]);
 
         $response = $client->request($method, $url, [
             'headers' => $headers,
-            'json' => $body,
+            $type => $body,
             'connect_timeout' => $connectTimeout,
             'timeout' => $timeout
         ])->getBody()->getContents();
