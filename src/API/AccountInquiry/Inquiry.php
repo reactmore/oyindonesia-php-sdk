@@ -55,7 +55,7 @@ class Inquiry implements RequestInterface
 
             // $response = $response['data'];
 
-            return ResponseFormatter::formatResponse($response, $response['status']['code'], $response['status']['message']);
+            return $response;
         } catch (Exception $e) {
             return Guzzle::handleException($e);
         }
@@ -80,6 +80,6 @@ class Inquiry implements RequestInterface
     {
         $status = $this->getResponse();
 
-        return $status->code;
+        return $status->status;
     }
 }
