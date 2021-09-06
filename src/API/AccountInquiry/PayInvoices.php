@@ -11,7 +11,7 @@ use Reactmore\OY\Helpers\Request\RequestFormatter;
 use Reactmore\OY\Helpers\Validations\MainValidator;
 
 
-class InquiryInvoices implements RequestInterface
+class PayInvoices implements RequestInterface
 {
     private  $api_url, $headers, $data;
 
@@ -44,28 +44,13 @@ class InquiryInvoices implements RequestInterface
     }
 
 
-
-    public function getById()
-    {
-        try {
-            MainValidator::validateRequest($this->getPayload(), ['id']);
-
-            $request = RequestFormatter::formatArrayKeysToSnakeCase($this->getPayload());
-            $response = Guzzle::sendRequest($this->api_url . '/account-inquiry/invoices/' . $request['id'], 'GET', $this->headers);
-
-            return $response;
-        } catch (Exception $e) {
-            return Guzzle::handleException($e);
-        }
-    }
-
     public function getData()
     {
         try {
-            MainValidator::validateRequest($this->getPayload());
+            MainValidator::validateRequest($this->getPayload(), ['invoice_id']);
 
             $request = RequestFormatter::formatArrayKeysToSnakeCase($this->getPayload());
-            $response = Guzzle::sendRequest($this->api_url . '/account-inquiry/invoices', 'GET', $this->headers, $request, 'query');
+            $response = Guzzle::sendRequest($this->api_url . '/account-inquiry/invoices/pay', 'POST', $this->headers, $request);
 
             return $response;
         } catch (Exception $e) {
